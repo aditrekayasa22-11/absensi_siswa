@@ -1,0 +1,23 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Blokir akses langsung ke file/folder sensitif
+    RewriteRule ^(\.env|\.git|composer\.(json|lock)|README\.md) - [F,L]
+    RewriteRule ^(config|src|database|storage|templates)/ - [F,L]
+</IfModule>
+
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+DirectoryIndex index.php
+
+ErrorDocument 403 /absensi_siswa/index.php

@@ -1,0 +1,17 @@
+# Konfigurasi sensitif
+.env
+.env.local
+
+# Log & data runtime
+storage/logs/*
+!storage/logs/.gitkeep
+storage/installed.lock
+
+# Dependensi & editor
+vendor/
+node_modules/
+.vscode/
+.idea/
+*.log
+.DS_Store
+Thumbs.db
